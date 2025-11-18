@@ -1,22 +1,25 @@
 plugins {
-    id 'java-library'
+    id 'java'
     id 'io.qameta.allure' version '2.11.2'
-
 }
 
-def allureVersion = "2.21.0",
-     selenideVersion = "6.19.1"
+repositories {
+    mavenCentral()
+}
 
+compileTestJava {
+    options.encoding = 'UTF-8'
+}
 
 allure {
     report {
-        version.set(allureVersion)
+        version.set("2.21.0")
     }
-    adapter {
-        aspectjWeaver.set(true)
+    adapter { // отвечает за появление папочки build/allure-results
+        aspectjWeaver.set(true) //обработка аннотации @Step
         frameworks {
-            junit5 {
-                adapterVersion.set(allureVersion)
+            junit5 { //название фреймворка
+                adapterVersion.set("2.21.0") //версия интеграции фреймворка и Allure
             }
         }
     }
@@ -24,27 +27,23 @@ allure {
 
 dependencies {
     testImplementation(
-            "com.codeborne:selenide:$selenideVersion",
-            "io.qameta.allure:allure-selenide:$allureVersion",
-            "org.junit.jupiter:junit-jupiter:5.10.0",
-            'com.github.javafaker:javafaker:1.0.2',
-            'org.slf4j:slf4j-simple:2.0.7'
+            "com.codeborne:selenide:6.13.0",
+            "org.junit.jupiter:junit-jupiter:5.9.2",
+            "org.slf4j:slf4j-simple:2.0.7",
+            "io.qameta.allure:allure-selenide:2.21.0",
+            'com.github.javafaker:javafaker:1.0.2'
+
     )
 }
 
-tasks.withType(Test) {
+test {
     useJUnitPlatform()
-
+    systemProperties(System.getProperties())
     testLogging {
+
         lifecycle {
             events "started", "skipped", "failed", "standard_error", "standard_out"
             exceptionFormat "short"
         }
-    }
-}
-
-tasks.register('mkb_test', Test) {
-    useJUnitPlatform {
-        includeTags("MainPageTests")
     }
 }
