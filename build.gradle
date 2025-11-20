@@ -54,6 +54,11 @@ tasks.withType(Test) {
         }
     }
 }
+tasks.register('komus', Test) {
+    useJUnitPlatform {
+        includeTags("komus")
+    }
+}
 
 
 
