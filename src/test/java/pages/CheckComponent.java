@@ -2,6 +2,7 @@ package pages;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 
@@ -10,7 +11,6 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
-import static org.assertj.core.api.BDDAssertions.and;
 
 
 public class CheckComponent {
@@ -23,19 +23,19 @@ public class CheckComponent {
             ElementsCollection searchResult = $$(".product-list-wrapper");
 
 
-
-
-    public CheckComponent checkMainPageIsOpen() {
+            @Step ("Отображается главная страница сайта")
+    public  CheckComponent checkMainPageIsOpen() {
         komusHeader.shouldBe(visible);
         return this;
     }
 
+          @Step ("Находим окно поиска товаров")
     public CheckComponent checkSearchInputIsVisible() {
         searchInput.shouldBe(visible);
 
         return this;
     }
-
+    @Step ("Находим принтеры через окно поиска")
     public CheckComponent searchPrinters() {
         searchInput.click();
         searchInput.sendKeys("Принтеры");
@@ -45,12 +45,14 @@ public class CheckComponent {
         return this;
     }
 
+    @Step ("Проверяем, что корзина пуста")
         public CheckComponent emptyCart() {
         cart.click();
         emptyCartText.shouldHave(text("Корзина ждет, что ее наполнят. Желаем приятных покупок!"));
             return this;
         }
 
+    @Step ("Проверяем, что доступен виджет поиска картриджей")
         public CheckComponent suppliesPickerIsVisible () {
             suppliesPicker.shouldHave(text("Подбор картриджей"));
 

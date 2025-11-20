@@ -19,7 +19,7 @@ public class TestBase {
         Configuration.baseUrl = "https://www.komus.ru";
         Configuration.pageLoadStrategy = "eager";
         Configuration.timeout = 10000;
-        //Configuration.remote = ("https://user1:1234@selenoid.autotests.cloud/wd/hub");
+        Configuration.remote = ("https://user1:1234@selenoid.autotests.cloud/wd/hub");
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.of(
