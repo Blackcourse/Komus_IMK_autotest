@@ -1,4 +1,5 @@
-package java.helpers;
+package helpers;
+
 
 import com.codeborne.selenide.Selenide;
 import io.qameta.allure.Attachment;
@@ -10,6 +11,7 @@ import java.net.URL;
 import java.nio.charset.StandardCharsets;
 
 import static com.codeborne.selenide.Selenide.sessionId;
+import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static org.openqa.selenium.logging.LogType.BROWSER;
 
 public class AttachForAllure {
@@ -19,7 +21,7 @@ public class AttachForAllure {
     }
 
     @Attachment(value = "Page source", type = "text/plain")
-    public static byte[] pageSource() {
+    public static byte[] pageSource(String pageSource) {
         return getWebDriver().getPageSource().getBytes(StandardCharsets.UTF_8);
     }
 
@@ -52,5 +54,3 @@ public class AttachForAllure {
         return null;
     }
 }
-
-

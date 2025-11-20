@@ -1,49 +1,107 @@
 plugins {
-    id 'java'
+    id 'java-library'
     id 'io.qameta.allure' version '2.11.2'
+}
+def allureVersion = "2.21.0",
+    selenideVersion = "6.19.1"
+
+allure {
+    report {
+        version.set(allureVersion) //версия Allure Report (https://github.com/allure-framework/allure2)
+    }
+    adapter {
+        aspectjWeaver.set(true) // обработка аннотации @Step
+        frameworks {
+            junit5 {
+                adapterVersion.set(allureVersion) //версия Allure JUnit5 (https://github.com/allure-framework/allure-java)
+            }
+        }
+    }
 }
 
 repositories {
     mavenCentral()
 }
 
-compileTestJava {
-    options.encoding = 'UTF-8'
-}
-
-allure {
-    report {
-        version.set("2.21.0")
-    }
-    adapter { // отвечает за появление папочки build/allure-results
-        aspectjWeaver.set(true) //обработка аннотации @Step
-        frameworks {
-            junit5 { //название фреймворка
-                adapterVersion.set("2.21.0") //версия интеграции фреймворка и Allure
-            }
-        }
-    }
-}
-
 dependencies {
     testImplementation(
-            "com.codeborne:selenide:6.13.0",
-            "org.junit.jupiter:junit-jupiter:5.9.2",
-            "org.slf4j:slf4j-simple:2.0.7",
-            "io.qameta.allure:allure-selenide:2.21.0",
-            'com.github.javafaker:javafaker:1.0.2'
-
+            "com.codeborne:selenide:$selenideVersion",
+            "com.github.javafaker:javafaker:1.0.2",
+            "org.junit.jupiter:junit-jupiter:5.10.0",
+            'org.slf4j:slf4j-simple:2.0.7',
+            "com.codeborne:pdf-test:1.8.1",
+            "com.codeborne:pdf-test:2.1.0",
+            "com.codeborne:xls-test:1.7.2",
+            "org.apache.poi:poi:5.2.4",
+            "com.opencsv:opencsv:5.12.0",
+            "org.junit.jupiter:junit-jupiter",
+            "tools.jackson.core:jackson-core:3.0.0",
+            "tools.jackson.core:jackson-databind:3.0.0",
+            "com.fasterxml.jackson.core:jackson-annotations:2.20",
+            "org.assertj:assertj-core:3.26.0",
+            "org.apache.poi:poi-ooxml:5.4.0",
+            "io.qameta.allure:allure-selenide:$allureVersion"
     )
 }
 
-test {
+tasks.withType(Test) {
     useJUnitPlatform()
     systemProperties(System.getProperties())
     testLogging {
-
         lifecycle {
             events "started", "skipped", "failed", "standard_error", "standard_out"
             exceptionFormat "short"
         }
+    }
+}
+
+task single_property_test(type: Test) {
+    useJUnitPlatform() {
+        includeTags("singlePropertyTest")
+    }
+}
+tasks.register('simple', Test) {
+    useJUnitPlatform {
+        includeTags("simple")
+    }
+}
+
+tasks.register('demoqa', Test) {
+    useJUnitPlatform {
+        includeTags("demoqa")
+    }
+}
+
+tasks.register('demoqa_property', Test) {
+    useJUnitPlatform {
+        includeTags("demoqa_property")
+    }
+}
+
+tasks.register('remote', Test) {
+    useJUnitPlatform {
+        includeTags("remote")
+    }
+}
+
+tasks.register('property', Test) {
+    useJUnitPlatform {
+        includeTags("property")
+    }
+}
+
+tasks.register('hello', Test) {
+    useJUnitPlatform {
+        includeTags("hello")
+    }
+}
+
+tasks.register('SMOKE', Test) {
+    testLogging {
+        events "passed", "skipped", "failed", "standardOut", "standardError"
+        exceptionFormat "full"
+    }
+    useJUnitPlatform {
+        includeTags("SMOKE")
     }
 }
