@@ -55,7 +55,7 @@ ____
 
 ____
 <a id="jenkins"></a>
-## <img alt="Jenkins" height="25" src="images/logo/Jenkins.svg" width="25"/></a><a name="Сборка"></a>Сборка в [Jenkins](https://jenkins.autotests.cloud/job/Komus_auto_test/)</a>
+## <img images/logo/Jenkins.svg" height="25" src="images/logo/Jenkins.svg" width="25"/></a><a name="Сборка"></a>Сборка в [Jenkins](https://jenkins.autotests.cloud/job/Komus_auto_test/)</a>
 ____
 <p align="center">  
 <a href="https://jenkins.autotests.cloud/job/Komus_auto_test//"><img src=screen/Jenkins_build.png" alt="Jenkins" width="950"/></a>  
