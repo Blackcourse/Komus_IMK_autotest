@@ -1,6 +1,5 @@
 package pages;
 
-import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
@@ -11,27 +10,23 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
+import static org.assertj.core.api.BDDAssertions.and;
 
 
 public class CheckComponent {
 
     private SelenideElement komusHeader = $(By.id("top-subHeader")),
-            newYearCard = $(".base-slider banner-slider__swiper-container"),
             searchInput = $(".v-input__field"),
-            changeRegion = $ (".qa-choose-region"),
-            moscowOblchange = $ (".qa-region-item.b-region__list__item--current").shouldHave(text("Московская область"));
+            suppliesPicker = $ (".supplies-picker__header"),
+            cart = $("a[href='/cart/?from=top']"),
+            emptyCartText = $ ("h2.cart__subtitle");
             ElementsCollection searchResult = $$(".product-list-wrapper");
+
 
 
 
     public CheckComponent checkMainPageIsOpen() {
         komusHeader.shouldBe(visible);
-        return this;
-    }
-
-    public CheckComponent checkNewYearCardIsVisible() {
-        newYearCard.shouldBe(visible);
-
         return this;
     }
 
@@ -45,14 +40,19 @@ public class CheckComponent {
         searchInput.click();
         searchInput.sendKeys("Принтеры");
         searchInput.sendKeys(Keys.ENTER);
-        searchResult.shouldHave(CollectionCondition.sizeGreaterThan(0));
+        searchResult.shouldHave(sizeGreaterThan(0));
 
         return this;
     }
 
-        public CheckComponent changeRegion() {
-            changeRegion.click();
-            moscowOblchange.click();
+        public CheckComponent emptyCart() {
+        cart.click();
+        emptyCartText.shouldHave(text("Корзина ждет, что ее наполнят. Желаем приятных покупок!"));
+            return this;
+        }
+
+        public CheckComponent suppliesPickerIsVisible () {
+            suppliesPicker.shouldHave(text("Подбор картриджей"));
 
             return this;
         }

@@ -55,53 +55,5 @@ tasks.withType(Test) {
     }
 }
 
-task single_property_test(type: Test) {
-    useJUnitPlatform() {
-        includeTags("singlePropertyTest")
-    }
-}
-tasks.register('simple', Test) {
-    useJUnitPlatform {
-        includeTags("simple")
-    }
-}
 
-tasks.register('demoqa', Test) {
-    useJUnitPlatform {
-        includeTags("demoqa")
-    }
-}
 
-tasks.register('demoqa_property', Test) {
-    useJUnitPlatform {
-        includeTags("demoqa_property")
-    }
-}
-
-tasks.register('remote', Test) {
-    useJUnitPlatform {
-        includeTags("remote")
-    }
-}
-
-tasks.register('property', Test) {
-    useJUnitPlatform {
-        includeTags("property")
-    }
-}
-
-tasks.register('hello', Test) {
-    useJUnitPlatform {
-        includeTags("hello")
-    }
-}
-
-tasks.register('SMOKE', Test) {
-    testLogging {
-        events "passed", "skipped", "failed", "standardOut", "standardError"
-        exceptionFormat "full"
-    }
-    useJUnitPlatform {
-        includeTags("SMOKE")
-    }
-}

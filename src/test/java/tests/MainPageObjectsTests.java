@@ -40,14 +40,27 @@ public class MainPageObjectsTests extends TestBase {
         checkComponent.searchPrinters();
     }
 
+    @Test
+    @DisplayName("Проверка пустой корзины")
+    @Tag("MainPageTests")
+    void emptyCart() {
+        mainPage.openPage();
+        checkComponent.emptyCart();
+    }
 
 
+        @Test
+        @DisplayName("Проверка отображения элемента для подбора картриджей")
+        @Tag("MainPageTests")
+        void suppliesPickerIsVisible () {
+            mainPage.openPage();
+            checkComponent.suppliesPickerIsVisible();
+
+        }
 
 
+    }
 
-
-
-}
 
 
 
