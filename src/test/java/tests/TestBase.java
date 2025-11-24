@@ -18,7 +18,6 @@ public class TestBase {
     static void setupEnviroment() {
         Configuration.baseUrl = "https://www.komus.ru";
         Configuration.pageLoadStrategy = "eager";
-        Configuration.timeout = 10000;
         Configuration.remote = ("https://user1:1234@selenoid.autotests.cloud/wd/hub");
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -30,6 +29,7 @@ public class TestBase {
     }
 
     @BeforeEach
+
     void addSelenideLogger() {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
     }
