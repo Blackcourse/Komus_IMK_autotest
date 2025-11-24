@@ -1,8 +1,8 @@
 ﻿
 # Проект по автоматизации тестирования для компании [Комус](https://www.komus.ru/)
 
-> ООО "Комус" 35 лет в сфере снабжения бизнеса
-Более 100 000 товаров различных категорий:
+> ООО «Комус» - одна из самых первых интернет-магазинов, который занимается поставкой канцтоваров и не только. Более 35 лет в сфере снабжения бизнесаю Более 100 000 товаров различных категорий:
+
 для офиса, производственных площадок, торговых залов, образовательных и медицинских учреждений, ресторанов и отелей, строительства и многих других.
 
 Сервисы и услуги для наших партнёров,
@@ -46,19 +46,19 @@ ____
 <a id="cases"></a>
 ## <a name="Примеры автоматизированных тест-кейсов">**Примеры автоматизированных тест-кейсов:**</a>
 ____
-- ✓ *Проверка отображения пустой корзины без товаров*
-- ✓ *Проверка доступности поиска принтеров*
-- ✓ *Проверка отображения элемента для подбора картриджей"*
-- ✓ *Проверка доступности окна поиска товаров*
-- ✓ *Проверка отображения обязательной информации в заголовке сайта*
+- ✓ *Проверка отображения заголовка на главной страницы с корректным текстом*
+- ✓ *Проверка корректной работы чек-боксов и отображения карточек продуктов*
+- ✓ *Проверка ввода некорректного номера телефона и нажатия кнопки "Свяжитесь с нами"*
+- ✓ *Проверка ввода некорректного email, заполнения чек-бокса и нажатия кнопки подписки на рассылку*
+- ✓ *Проверка отображения обязательной информации в нижней части сайта*
 
 
 ____
 <a id="jenkins"></a>
-## <img alt="Jenkins" height="25" src="images/logo/Jenkins.svg" width="25"/></a><a name="Сборка"></a>Сборка в [Jenkins](https://jenkins.autotests.cloud/job/Komus_auto_test/8/)</a>
+## <img width="4%" style="vertical-align:middle" src="images/logo/Jenkins.svg" width="25"/></a><a name="Сборка"></a>Сборка в [Jenkins](https://jenkins.autotests.cloud/job/Komus_auto_test/)</a>
 ____
 <p align="center">  
-<a href=https://jenkins.autotests.cloud/job/Komus_auto_test/8//"><img src="images/screen/jenkins_build.png" alt="Jenkins" width="950"/></a>  
+<a href="https://jenkins.autotests.cloud/job/Komus_auto_test//"><img src=screen/Jenkins_build.png" alt="Jenkins" width="950"/></a>  
 </p>
 
 
@@ -91,21 +91,13 @@ ___
 ### *Основная страница отчёта*
 
 <p align="center">  
-<img title="Allure Overview Dashboard" src="images/screen/jenkins.png" width="850">  
+<img title="Allure Overview Dashboard" src="screen/Allure_report.png" width="850">  
 </p>  
 
 ### *Тест-кейсы*
 
 <p align="center">  
-<img title="Allure Tests" src="images/screen/jenkins_tests.png" width="850">  
-</p>
-
-### *Графики*
-
-  <p align="center">  
-<img title="Allure Graphics" src="images/screen/allure_graths.png" width="850">
-
-<img title="Allure Graphics" src="images/screen/graphs.png" width="850">  
+<img title="Allure Tests" src=screen/AllureTestspng.png" width="850">  
 </p>
 
 ____
@@ -113,7 +105,7 @@ ____
 ## <img alt="Allure" height="25" src="images/logo/Telegram.svg" width="25"/></a> Уведомление в Telegram при помощи бота
 ____
 <p align="center">  
-<img title="Allure Overview Dashboard" src="images/screen/telegram.png" width="550">  
+<img title="Allure Overview Dashboard" src="screen/allure_telegram.png" width="550">  
 </p>
 
 ____
@@ -121,5 +113,5 @@ ____
 ## <img alt="Selenoid" height="25" src="images/logo/Selenoid.svg" width="25"/></a> Примеры видео выполнения тестов на Selenoid
 ____
 <p align="center">
-<img title="Selenoid Video" src="images/video/mkb.gif" width="550" height="350"  alt="video">   
+<img title="Selenoid Video" src="video/komus.gif" width="550" height="350"  alt="video">   
 </p>
