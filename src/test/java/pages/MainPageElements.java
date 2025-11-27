@@ -13,30 +13,29 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
 
-public class CheckComponent {
+public class MainPageElements {
 
     private SelenideElement komusHeader = $(By.id("top-subHeader")),
             searchInput = $(".v-input__field"),
             suppliesPicker = $ (".supplies-picker__header"),
-            cart = $("a[href='/cart/?from=top']"),
             emptyCartText = $ ("h2.cart__subtitle");
             ElementsCollection searchResult = $$(".product-list-wrapper");
 
 
             @Step ("Отображается главная страница сайта")
-    public  CheckComponent checkMainPageIsOpen() {
+    public MainPageElements checkMainPageIsOpen() {
         komusHeader.shouldBe(visible);
         return this;
     }
 
           @Step ("Находим окно поиска товаров")
-    public CheckComponent checkSearchInputIsVisible() {
+    public MainPageElements checkSearchInputIsVisible() {
         searchInput.shouldBe(visible);
 
         return this;
     }
     @Step ("Находим принтеры через окно поиска")
-    public CheckComponent searchPrinters() {
+    public MainPageElements searchPrinters() {
         searchInput.click();
         searchInput.sendKeys("Принтеры");
         searchInput.sendKeys(Keys.ENTER);
@@ -45,15 +44,8 @@ public class CheckComponent {
         return this;
     }
 
-    @Step ("Проверяем, что корзина пуста")
-        public CheckComponent emptyCart() {
-        cart.click();
-        emptyCartText.shouldHave(text("Корзина ждет, что ее наполнят. Желаем приятных покупок!"));
-            return this;
-        }
-
     @Step ("Проверяем, что доступен виджет поиска картриджей")
-        public CheckComponent suppliesPickerIsVisible () {
+        public MainPageElements suppliesPickerIsVisible () {
             suppliesPicker.shouldHave(text("Подбор картриджей"));
 
             return this;

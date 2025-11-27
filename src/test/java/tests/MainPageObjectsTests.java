@@ -3,7 +3,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
-import pages.CheckComponent;
+import pages.BasketPage;
+import pages.MainPageElements;
 import pages.MainPage;
 
 
@@ -11,7 +12,8 @@ import pages.MainPage;
 public class MainPageObjectsTests extends TestBase {
 
     MainPage mainPage = new MainPage();
-    CheckComponent checkComponent = new CheckComponent();
+    MainPageElements mainPageElements = new MainPageElements();
+    BasketPage basketPage = new BasketPage();
 
 
     @Test
@@ -19,7 +21,7 @@ public class MainPageObjectsTests extends TestBase {
     @Tag("MainPageTests")
     void positiveMainPageIsVisible() {
         mainPage.openPage();
-        checkComponent.checkMainPageIsOpen();
+        mainPageElements.checkMainPageIsOpen();
     }
 
     @Test
@@ -27,7 +29,7 @@ public class MainPageObjectsTests extends TestBase {
     @Tag("MainPageTests")
     void searchFormOnMainPage() {
         mainPage.openPage();
-        checkComponent.checkSearchInputIsVisible();
+        mainPageElements.checkSearchInputIsVisible();
 
     }
 
@@ -37,7 +39,7 @@ public class MainPageObjectsTests extends TestBase {
     @Tag("MainPageTests")
     void searchPrinters() {
         mainPage.openPage();
-        checkComponent.searchPrinters();
+        mainPageElements.searchPrinters();
     }
 
     @Test
@@ -45,7 +47,7 @@ public class MainPageObjectsTests extends TestBase {
     @Tag("MainPageTests")
     void emptyCart() {
         mainPage.openPage();
-        checkComponent.emptyCart();
+        basketPage.emptyCart();
     }
 
 
@@ -54,7 +56,7 @@ public class MainPageObjectsTests extends TestBase {
         @Tag("MainPageTests")
         void suppliesPickerIsVisible () {
             mainPage.openPage();
-            checkComponent.suppliesPickerIsVisible();
+            mainPageElements.suppliesPickerIsVisible();
 
         }
 
